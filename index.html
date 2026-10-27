@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedic Panchangam Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="panchang-wrapper">
+        <!-- App Header Banner -->
+        <header class="app-header">
+            <div class="mandala-icon">🕉️</div>
+            <h1>Vedic Panchang</h1>
+            <p>Accurate Daily Hindu Calendar & Muhurat</p>
+        </header>
+
+        <!-- Dynamic Control Bar with Manual Search Capability -->
+        <div class="control-panel">
+            <div class="input-group">
+                <label for="panchang-date">Select Date</label>
+                <input type="date" id="panchang-date">
+            </div>
+            <div class="input-group">
+                <label for="location-input">Enter City or Region</label>
+                <div class="geo-box">
+                    <input type="text" id="location-input" placeholder="Type city (e.g. Mumbai, London)...">
+                    <button id="search-btn" title="Search Location">🔍</button>
+                    <button id="gps-btn" title="Use GPS Location">📍</button>
+                </div>
+                <small id="active-coordinates">Coordinates: Fallback Active</small>
+            </div>
+        </div>
+
+        <!-- Main Dashboard View -->
+        <main id="panchang-content" class="dashboard-grid hidden">
+            
+            <!-- Sun & Moon Telemetry Header Card -->
+            <div class="full-width-card solar-lunar-card">
+                <div class="telemetry-item">
+                    <span class="icon">🌅</span>
+                    <div>
+                        <small>Sunrise</small>
+                        <strong id="sunrise-time">--:--</strong>
+                    </div>
+                </div>
+                <div class="date-big-display">
+                    <h2 id="hindu-date-str">Masa & Paksha</h2>
+                    <span id="ritu-ayana">Ritu & Ayana info</span>
+                </div>
+                <div class="telemetry-item">
+                    <span class="icon">🌇</span>
+                    <div>
+                        <small>Sunset</small>
+                        <strong id="sunset-time">--:--</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Highlighted Prahara / Adphara Grid Component -->
+            <div class="full-width-card prahara-card">
+                <div class="prahara-header">
+                    <h3>☀️ Active Prahara / Adphara Tracker</h3>
+                    <span class="badge" id="current-prahara-num">Watch --</span>
+                </div>
+                <div class="prahara-main">
+                    <div class="prahara-display">
+                        <span class="prahara-label">Current Watch Time Window</span>
+                        <div class="prahara-time" id="val-prahara-range">--:-- to --:--</div>
+                    </div>
+                    <div class="prahara-desc" id="val-prahara-note">
+                        Calculating daylight split intervals...
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core 5 Elements Grid Elements -->
+            <div class="element-card border-tithi">
+                <h3>Tithi (Lunar Day)</h3>
+                <div class="main-val" id="val-tithi">--</div>
+                <p class="sub-val" id="end-tithi">Ends at: --</p>
+            </div>
+
+            <div class="element-card border-vaar">
+                <h3>Vaar (Day of Week)</h3>
+                <div class="main-val" id="val-vaar">--</div>
+                <p class="sub-val" id="lord-vaar">Ruling Planet: --</p>
+            </div>
+
+            <div class="element-card border-nakshatra">
+                <h3>Nakshatra (Star)</h3>
+                <div class="main-val" id="val-nakshatra">--</div>
+                <p class="sub-val" id="end-nakshatra">Ends at: --</p>
+            </div>
+
+            <div class="element-card border-yoga">
+                <h3>Yoga</h3>
+                <div class="main-val" id="val-yoga">--</div>
+                <p class="sub-val" id="end-yoga">Ends at: --</p>
+            </div>
+
+            <div class="element-card border-karana">
+                <h3>Karana</h3>
+                <div class="main-val" id="val-karana">--</div>
+                <p class="sub-val" id="end-karana">Ends at: --</p>
+            </div>
+
+            <!-- Crucial Windows / Muhurat Windows -->
+            <div class="element-card danger-card">
+                <h3>Rahu Kaal</h3>
+                <div class="time-range" id="val-rahu">--:-- to --:--</div>
+                <p class="warning-text">Inauspicious Period</p>
+            </div>
+
+        </main>
+
+        <!-- Informational States -->
+        <div id="loader" class="loader-state">
+            <div class="spinner"></div>
+            <p>Calculating planetary metrics...</p>
+        </div>
+        
+        <p id="error-bar" class="error-msg hidden"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

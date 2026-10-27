@@ -1,0 +1,336 @@
+:root {
+    --bg-gradient: linear-gradient(135deg, #1e1105 0%, #3a1c03 100%);
+    --panel-bg: rgba(255, 255, 255, 0.04);
+    --panel-border: rgba(255, 165, 0, 0.15);
+    --gold: #f39c12;
+    --saffron: #e67e22;
+    --text-main: #f3f3f3;
+    --text-muted: #bdc3c7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.panchang-wrapper {
+    width: 100%;
+    max-width: 750px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--panel-border);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.app-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.mandala-icon {
+    font-size: 40px;
+    margin-bottom: 5px;
+    animation: rotateMandala 20s linear infinite;
+    display: inline-block;
+}
+
+@keyframes rotateMandala {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.app-header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    color: var(--gold);
+    letter-spacing: 2px;
+}
+
+.app-header p {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+.control-panel {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 20px;
+    background: rgba(0,0,0,0.2);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.input-group input {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: var(--saffron);
+}
+
+.geo-box {
+    display: flex;
+    gap: 8px;
+}
+
+.geo-box input {
+    flex: 1;
+}
+
+#search-btn, #gps-btn {
+    background: var(--saffron);
+    border: none;
+    padding: 0 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+#gps-btn {
+    background: #4a3c31;
+}
+
+#search-btn:hover { background: var(--gold); }
+#gps-btn:hover { background: #5c4d40; }
+
+#active-coordinates {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.full-width-card {
+    grid-column: span 2;
+}
+
+.solar-lunar-card {
+    background: linear-gradient(90deg, rgba(230,126,34,0.1) 0%, rgba(243,156,18,0.1) 100%);
+    border: 1px solid var(--panel-border);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.date-big-display h2 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 20px;
+}
+
+.date-big-display span {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.telemetry-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+
+.telemetry-item .icon {
+    font-size: 28px;
+}
+
+/* Prahara / Adphara Highlighter UI Style Rules */
+.prahara-card {
+    background: linear-gradient(135deg, rgba(243, 156, 18, 0.15) 0%, rgba(230, 126, 34, 0.05) 100%);
+    border: 1px dashed var(--gold);
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.prahara-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 8px;
+}
+
+.prahara-header h3 {
+    font-size: 15px;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.badge {
+    background: var(--saffron);
+    color: white;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.prahara-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.prahara-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+}
+
+.prahara-time {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+}
+
+.prahara-desc {
+    font-size: 13px;
+    color: #e2e2e2;
+    background: rgba(0,0,0,0.3);
+    padding: 8px 12px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: right;
+}
+
+.element-card {
+    background: var(--panel-bg);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.element-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.border-tithi::before { background: #3498db; }
+.border-vaar::before { background: #e74c3c; }
+.border-nakshatra::before { background: #9b59b6; }
+.border-yoga::before { background: #2ecc71; }
+.border-karana::before { background: #f1c40f; }
+
+.element-card h3 {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.main-val {
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.sub-val {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.danger-card::before { background: #d63031; }
+.time-range {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff7675;
+    margin-top: 5px;
+}
+.warning-text {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #db7070;
+    margin-top: 5px;
+    letter-spacing: 0.5px;
+}
+
+.loader-state {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,165,0,0.1);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-msg {
+    color: #ff7675;
+    text-align: center;
+    background: rgba(214, 48, 49, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(214, 48, 49, 0.2);
+}
+
+.hidden { display: none !important; }
+
+@media(max-width: 600px) {
+    .control-panel, .dashboard-grid { grid-template-columns: 1fr; }
+    .full-width-card { grid-column: span 1; }
+    .solar-lunar-card, .prahara-main { flex-direction: column; gap: 15px; text-align: center; }
+    .prahara-desc { text-align: center; }
+}
